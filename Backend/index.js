@@ -1,5 +1,5 @@
 const express = require('express');
-const {conection} = require('./DB/Config')
+const {conection} = require('./DB/config')
 // const alquilerDepartamentos = require("./Routes/alquilerDepartamentos")
 // const cashFlow = require("./Routes/cashFlow")
 // const certificados = require("./Routes/certificados")
@@ -34,7 +34,7 @@ conection.connect(() => {
 
 app.get("/", (req, res) => {
     console.log("API FUNCIONANDO")
-    res.send({message: "API - LENO ARGENTINA"})
+    res.send({message: "CONSTRUCTORA AR - API CONECTADA ✓"})
 })
 
 
