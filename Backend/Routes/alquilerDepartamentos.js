@@ -10,4 +10,5 @@ router.put("/alquiler/edit/:id", editarAlquiler)
 router.put("/alquiler/delete/:id", borrarAlquiler)
 
 
+
 module.exports = router
