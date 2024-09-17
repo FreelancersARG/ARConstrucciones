@@ -1,13 +1,13 @@
 const express = require("express")
-const {obtenerRemuneraciones, unaRemuneracion, crearRemuneracion,editarRemuneracion,borrarRemuneracion} = require("../controllers/remuneraciones")
+const {allRemuneraciones, singleRemuneracion, createRemuneracion,editRemuneracion,deleteRemuneracion} = require("../controllers/remuneraciones")
 
 const router = express.Router()
 
-router.get("/remuneraciones", obtenerRemuneraciones)
-router.get("/remuneraciones/:id", unaRemuneracion)
-router.post("/remuneraciones/create/", crearRemuneracion)
-router.put("/remuneraciones/edit/:id", editarRemuneracion)
-router.put("/remuneraciones/delete/:id", borrarRemuneracion)
+router.get("/remuneraciones", allRemuneraciones)
+router.get("/remuneraciones/:id", singleRemuneracion)
+router.post("/remuneraciones/create/", createRemuneracion)
+router.put("/remuneraciones/edit/:id", editRemuneracion)
+router.put("/remuneraciones/delete/:id", deleteRemuneracion)
 
 
 module.exports = router

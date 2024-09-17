@@ -1,13 +1,13 @@
 const express = require("express")
-const {obtenerPagosAlquileres, unPagoAlquiler, crearPagosAlquileres,editarPagosAlquileres,borrarPagosAlquileres} = require("../controllers/pagosAlquileres")
+const {allPagosAlquileres, unPagoAlquiler, createPagosAlquileres,editPagosAlquileres,deletePagosAlquileres} = require("../controllers/pagosAlquileres")
 
 const router = express.Router()
 
-router.get("/pagosAlquileres", obtenerPagosAlquileres)
+router.get("/pagosAlquileres", allPagosAlquileres)
 router.get("/pagosAlquileres/:id", unPagoAlquiler)
-router.post("/pagosAlquileres/create/", crearPagosAlquileres)
-router.put("/pagosAlquileres/edit/:id", editarPagosAlquileres)
-router.put("/pagosAlquileres/delete/:id", borrarPagosAlquileres)
+router.post("/pagosAlquileres/create/", createPagosAlquileres)
+router.put("/pagosAlquileres/edit/:id", editPagosAlquileres)
+router.put("/pagosAlquileres/delete/:id", deletePagosAlquileres)
 
 
 module.exports = router

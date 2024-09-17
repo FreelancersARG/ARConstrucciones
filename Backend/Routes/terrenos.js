@@ -1,13 +1,13 @@
 const express = require("express")
-// const {obtenerTerrenos, unTerreno, crearTerreno,editarTerreno,borrarTerreno} = require("../controllers/terrenos")
+const {allTerrenos, singleTerreno, createTerreno,editTerreno,deleteTerreno} = require("../controllers/terrenos")
 
 const router = express.Router()
 
-router.get("/terrenos", obtenerTerrenos)
-router.get("/terrenos/:id", unTerreno)
-router.post("/terrenos/create/", crearTerreno)
-router.put("/terrenos/edit/:id", editarTerreno)
-router.put("/terrenos/delete/:id", borrarTerreno)
+router.get("/terrenos", allTerrenos)
+router.get("/terrenos/:id", singleTerreno)
+router.post("/terrenos/create/", createTerreno)
+router.put("/terrenos/edit/:id", editTerreno)
+router.put("/terrenos/delete/:id", deleteTerreno)
 
 
 module.exports = router

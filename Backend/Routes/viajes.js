@@ -1,13 +1,13 @@
 const express = require("express")
-// const {obtenerViajes, unViaje, crearViaje,editarViaje,borrarViaje} = require("../controllers/viajes")
+const {allViajes, singleViaje, createViaje,editViaje,deleteViaje} = require("../controllers/viajes")
 
 const router = express.Router()
 
-router.get("/viajes", obtenerViajes)
-router.get("/viajes/:id", unViaje)
-router.post("/viajes/create/", crearViaje)
-router.put("/viajes/edit/:id", editarViaje)
-router.put("/viajes/delete/:id", borrarViaje)
+router.get("/viajes", allViajes)
+router.get("/viajes/:id", singleViaje)
+router.post("/viajes/create/", createViaje)
+router.put("/viajes/edit/:id", editViaje)
+router.put("/viajes/delete/:id", deleteViaje)
 
 
 module.exports = router
