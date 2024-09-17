@@ -1,7 +1,6 @@
 const express = require("express")
 
-const router = express.Router()// metodo propio de express que tiene el enrutamiento
-
+const router = express.Router()
 const {allStockMateriales,singleStockMateriales,createStockMateriales,editStockMateriales,deleteStockMateriales} = require("../controllers/stockMateriales")
 
 //peticiones http
