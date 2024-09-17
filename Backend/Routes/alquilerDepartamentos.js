@@ -1,14 +1,14 @@
 const express = require("express")
+// const {obtenerAlquileres, unAlquiler, crearAlquiler,editarAlquiler,borrarAlquiler} = require("../controllers/alquileres")
 
-const router = express.Router()// metodo propio de express que tiene el enrutamiento
+const router = express.Router()
 
-const {allAlquilerDepartamentos,singleAlquilerDepartamentos,createAlquilerDepartamentos,editAlquilerDepartamentos,deleteAlquilerDepartamentos} = require("../controllers/alquilerDepartamentos")
+router.get("/alquiler", obtenerAlquileres)
+router.get("/alquiler/:id", unAlquiler)
+router.post("/alquiler/create/", crearAlquiler)
+router.put("/alquiler/edit/:id", editarAlquiler)
+router.put("/alquiler/delete/:id", borrarAlquiler)
 
-//peticiones http
-router.get("/alquilerDepartamentos/",allAlquilerDepartamentos)//muestra todo
-router.get("/alquilerDepartamentos/:id", singleAlquilerDepartamentos)//para ver uno
-router.post("/alquilerDepartamentos/create",createAlquilerDepartamentos)
-router.put("/alquilerDepartamentos/edit/:id",editAlquilerDepartamentos)
-router.put("/alquilerDepartamentos/delete/:id",deleteAlquilerDepartamentos)
+
 
 module.exports = router
