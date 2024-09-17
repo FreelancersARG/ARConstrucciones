@@ -1,5 +1,5 @@
 const express = require("express")
-// const {obtenerRemuneraciones, unaRemuneracion, crearRemuneracion,editarRemuneracion,borrarRemuneracion} = require("../controllers/remuneraciones")
+const {obtenerRemuneraciones, unaRemuneracion, crearRemuneracion,editarRemuneracion,borrarRemuneracion} = require("../controllers/remuneraciones")
 
 const router = express.Router()
 
