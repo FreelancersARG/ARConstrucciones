@@ -5,6 +5,7 @@ const alldaily_books = (req,res) =>{
 const {fechaPorDia} = req.body 
 // todas las fechas son las mismas osea en el front estaran igualadas, con esto logramos
 // poder ser mostrados todos los datos por dia mostrando el libro diario 
+// los datos que se mostraran son los del front como es del input fecha con una sola variable funciona
 
 const query = `SELECT 'CERTIFICADO' as TIPO, o.nombreObra as Descripcion, c.montoCert as Monto, c.fechaPagoCert as Fecha
 FROM Certificados c
