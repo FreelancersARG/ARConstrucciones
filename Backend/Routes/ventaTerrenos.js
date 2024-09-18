@@ -1,8 +1,8 @@
 const express = require("express")
+const {allVentaTerreno,singleVentaTerreno,createVentaTerreno,editVentaTerreno,deleteVentaTerreno} = require("../controllers/ventaTerrenos")//importo los metodos del controlador
 
 const router = express.Router()// metodo propio de express que tiene el enrutamiento
 
-const {allVentaTerreno,singleVentaTerreno,createVentaTerreno,editVentaTerreno,deleteVentaTerreno} = require("../controllers/detalleViajes")
 
 //peticiones http
 router.get("/ventaTerreno/",allVentaTerreno)//muestra todo
