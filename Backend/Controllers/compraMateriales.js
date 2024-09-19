@@ -53,3 +53,5 @@ const deleteCompraMateriales = (req, res) => {
         res.send(results)
     })
 }
+
+module.exports = { allCompraMateriales, singleCompraMateriales, createCompraMateriales, editCompraMateriales, deleteCompraMateria }
