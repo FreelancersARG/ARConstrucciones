@@ -9,8 +9,8 @@ const allRemuneraciones = (req, res) => {
 }
 
 const singleRemuneracion = (req, res) => {
-    const { id_remuneracion } = req.params;
-    const query = `select * from Remuneraciones where id_remuneracion = ${id_remuneracion};`
+    const { id } = req.params.id;
+    const query = `select * from Remuneraciones where id_remuneracion = ${id};`
     conection.query(query, (err, results) => {
         if (err) throw err;
         res.json(results);
