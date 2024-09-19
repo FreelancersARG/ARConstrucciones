@@ -1,5 +1,5 @@
 const express = require("express")
-const {allCompraMateriales,singleCompraMateriales,createCompraMateriales,editCompraMateriales,deleteCompraMateriales} = require("../controllers/compraMateriales")
+const {allCompraMateriales,singleCompraMateriales,createCompraMateriales,editCompraMateriales,deleteCompraMateriales} = require("../Controllers/compraMateriales")
 
 const router = express.Router()// metodo propio de express que tiene el enrutamiento
 
