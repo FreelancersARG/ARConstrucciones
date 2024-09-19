@@ -1,5 +1,5 @@
 const express = require("express")
-const {allTerrenos, singleTerreno, createTerreno,editTerreno,deleteTerreno} = require("../controllers/terrenos")
+const {allTerrenos, singleTerreno, createTerreno,editTerreno,deleteTerreno} = require("../Controllers/terrenos")
 
 const router = express.Router()
 

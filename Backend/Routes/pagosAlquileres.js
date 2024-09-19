@@ -1,5 +1,5 @@
 const express = require("express")
-const {allPagosAlquileres, unPagoAlquiler, createPagosAlquileres,editPagosAlquileres,deletePagosAlquileres} = require("../controllers/pagosAlquileres")
+const {allPagosAlquileres, unPagoAlquiler, createPagosAlquileres,editPagosAlquileres,deletePagosAlquileres} = require("../Controllers/pagosAlquileres")
 
 const router = express.Router()
 
