@@ -22,7 +22,7 @@ const singleVehiculo = (req, res) => {
 const createVehiculo = (req, res) => {
     const {marcaVehiculo, patenteVehiculo, tipoVehiculo, seguroVehiculo} = req.body
 
-    const query = `insert into Vehiculos (marcaVehiculo, patenteVehiculo, tipoVehiculo, seguroVehiculo, activoVehiculo) values("${nombreCliente}","${apellidoCliente}","${dniCliente}","${telefonoCliente}","${direccionCliente}",1)`
+    const query = `insert into Vehiculos (marcaVehiculo, patenteVehiculo, tipoVehiculo, seguroVehiculo, activoVehiculo) values("${marcaVehiculo}","${patenteVehiculo}","${tipoVehiculo}","${seguroVehiculo}",1)`
     conection.query(query, (err,results) => {
         if(err) throw err 
         res.send(results)
