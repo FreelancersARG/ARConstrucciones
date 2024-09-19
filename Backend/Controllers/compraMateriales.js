@@ -47,7 +47,7 @@ const createCompraMateriales = (req, res) => {
 //Funcion para eliminar una compra de material
 const deleteCompraMateriales = (req, res) => {
     const id = req.params.id;
-    const query = `delete from CompraMateriales where id_compraMaterial = ${id};`
+    const query = `update CompraMateriales set activoCompra=0 where id_compraMaterial = ${id};`
     conection.query(query, (err, results) => {
         if (err) throw err;
         res.send(results)
