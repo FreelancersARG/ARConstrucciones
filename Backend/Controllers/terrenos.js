@@ -18,7 +18,7 @@ const unTerreno = (req, res) => {
 }
 
 const editTerreno = (req, res) => {
-    const { id_terreno, direccionTerreno, metrosTerrenos, disponibilidadTerreno, precioTerreno, activoTerreno } = req.body;
+    const { id_terreno, direccionTerreno, metrosTerrenos, disponibilidadTerreno, precioTerreno} = req.body;
     const query = `update Terrenos set direccionTerreno = '${direccionTerreno}', metrosTerrenos = '${metrosTerrenos}', disponibilidadTerreno = '${disponibilidadTerreno}', precioTerreno = '${precioTerreno}', activoTerreno = '${activoTerreno}' where id_terreno = ${id_terreno};`
     conection.query(query, (err, results) => {
         if (err) throw err;
@@ -27,7 +27,7 @@ const editTerreno = (req, res) => {
 }
 
 const createTerreno = (req, res) => {
-    const { direccionTerreno, metrosTerrenos, disponibilidadTerreno, precioTerreno, activoTerreno } = req.body;
+    const { direccionTerreno, metrosTerrenos, disponibilidadTerreno, precioTerreno } = req.body;
     const query = `insert into Terrenos (direccionTerreno, metrosTerrenos, disponibilidadTerreno, precioTerreno, activoTerreno) values ('${direccionTerreno}', '${metrosTerrenos}', '${disponibilidadTerreno}', '${precioTerreno}', '${activoTerreno}');`
     conection.query(query, (err, results) => {
         if (err) throw err;
@@ -36,11 +36,11 @@ const createTerreno = (req, res) => {
 }
 
 const deleteTerreno = (req, res) => {
-    const { id_terreno } = req.params;
-    const query = `delete from Terrenos where id_terreno = ${id_terreno};`
+    const id = req.params.id;
+    const query = `update Terrenos set activoTerreno=0 where id_terreno = ${id};`
     conection.query(query, (err, results) => {
         if (err) throw err;
-        res.json({ msg: "Terreno eliminado" });
+        res.send(results)
     })
 }
 
