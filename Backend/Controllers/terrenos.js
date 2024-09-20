@@ -9,8 +9,8 @@ const allTerrenos = (req, res) => {
 }
 
 const unTerreno = (req, res) => {
-    const { id_terreno } = req.params;
-    const query = `select * from Terrenos where id_terreno = ${id_terreno};`
+    const { id } = req.params.id;
+    const query = `select * from Terrenos where id_terreno = ${id};`
     conection.query(query, (err, results) => {
         if (err) throw err;
         res.json(results);

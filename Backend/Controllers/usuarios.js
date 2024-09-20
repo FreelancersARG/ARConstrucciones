@@ -9,8 +9,8 @@ const allUsuarios = (req, res) => {
 }
 
 const singleUsuario = (req, res) => {
-    const { id_usuario } = req.params;
-    const query = `select * from Usuarios where id_usuario = ${id_usuario};`
+    const { id } = req.params.id;
+    const query = `select * from Usuarios where id_usuario = ${id};`
     conection.query(query, (err, results) => {
         if (err) throw err;
         res.json(results);
