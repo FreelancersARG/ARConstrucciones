@@ -1,13 +1,13 @@
 const express = require("express")
-const {allAlquileres, singleAlquiler, createAlquiler,editAlquiler,deleteAlquiler} = require("../controllers/alquileres")
+const {allAlquilerDepartamentos, singleAlquilerDepartamento, createAlquilerDepartamento,editAlquilerDepartamentos,deleteAlquilerDepartamentos} = require("../controllers/alquileres")
 
 const router = express.Router()
 
-router.get("/alquiler", allAlquileres)
-router.get("/alquiler/:id", singleAlquiler)
-router.post("/alquiler/create/", createAlquiler)
-router.put("/alquiler/edit/:id", editAlquiler)
-router.put("/alquiler/delete/:id", deleteAlquiler)
+router.get("/alquiler", allAlquilerDepartamentos)
+router.get("/alquiler/:id", singleAlquilerDepartamento)
+router.post("/alquiler/create/", createAlquilerDepartamento)
+router.put("/alquiler/edit/:id", editAlquilerDepartamentos)
+router.put("/alquiler/delete/:id", deleteAlquilerDepartamentos)
 
 
 
