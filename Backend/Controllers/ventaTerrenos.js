@@ -1,7 +1,13 @@
 const {conection} = require('../DB/config');
 
 const allVentaTerreno = (req,res) =>{
-const query = `SELECT * FROM VentaTerrenos`
+const query = `SELECT * FROM select V.FechaVentaTerreno, T.DireccionTerreno, T.PrecioTerreno, C.NombreCliente, C.TelefonoCliente, C.CondicionCliente 
+from VentaTerrenos V 
+join Terrenos T
+on T.id_terreno = V.id_terreno
+join Clientes C
+on C.id_cliente = V.id_cliente;
+`
 conection.query(query,(err,results)=>{
     if(err){
         return res.status(500).json({error:'Error en la base de datos', details: err.message});
