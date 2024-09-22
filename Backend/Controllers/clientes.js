@@ -1,9 +1,5 @@
 const {conection} = require("../DB/config");
 
-
-const {conection} = require("../config/database")
-
-
 const allClientes = (req, res) => {
     const query = `select * from Clientes where activoCliente=1`
     conection.query(query, (err, results) => {

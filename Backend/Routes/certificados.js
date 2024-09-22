@@ -2,7 +2,7 @@ const express = require("express")
 
 const router = express.Router()// metodo propio de express que tiene el enrutamiento
 
-const {allCertificados,singleCertificados,createCertificados,editCertificados,deleteCertificados} = require("../controllers/certificados")
+const {allCertificados,singleCertificados,createCertificados,editCertificados,deleteCertificados} = require("../Controllers/certificados")
 
 //peticiones http
 router.get("/certificados/",allCertificados)//muestra todo

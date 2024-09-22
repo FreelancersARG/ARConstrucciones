@@ -1,5 +1,5 @@
 const express = require("express")
-const {allOperaciones,singleOperaciones,createOperaciones,editOperaciones,deleteOperaciones} = require("../controllers/operaciones")
+const {allOperaciones,singleOperaciones,createOperaciones,editOperaciones,deleteOperaciones} = require("../Controllers/operaciones")
 
 const router = express.Router()// metodo propio de express que tiene el enrutamiento
 
