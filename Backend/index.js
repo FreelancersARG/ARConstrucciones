@@ -15,7 +15,7 @@ const certificados = require("./Routes/certificados")
 //const stockMateriales = require("./Routes/stockMateriales")
 //const terrenos = require("./Routes/terrenos")
 //const usuarios = require("./Routes/usuarios")
-//const vehiculos = require("./Routes/vehiculos")
+const vehiculos = require("./Routes/vehiculos")
 const ventaTerrenos = require("./Routes/ventaTerrenos")
 const viajes = require("./Routes/viajes")
 const bodyParser = require('body-parser');
@@ -24,7 +24,7 @@ const app = express()
 const port = 8000;
 app.use(cors())
 app.use(bodyParser.json())
-app.use("/",viajes,certificados,ventaTerrenos)
+app.use("/",viajes,certificados,ventaTerrenos,vehiculos)
 app.use(express.json())
 // app.use("/", alquilerDepartamentos,cashFlow,certificados,clientes,compraMateriales,departamentos,detallesViajes,libroDiario,obras,operaciones,pagosAlquileres,remuneraciones,stockMateriales,terrenos,usuarios,vehiculos,ventaTerrenos,viajes)
 
