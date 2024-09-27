@@ -3,7 +3,7 @@ const {conection} = require('../DB/config');
 // Funcion para mostrar todos los detalles de los viajes
 
 const allDetallesViajes = (req, res) => {
-    const query = `select * from DetallesViajes;`
+    const query = `select * from DetallesViajes where activoDetalleViaje = 1;`
     conection.query(query, (err, results) => {
         if (err) throw err;
         res.json(results);
