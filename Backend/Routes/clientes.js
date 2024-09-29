@@ -1,5 +1,5 @@
 const express = require("express")
- const {allClientes, singleCliente, createCliente,editCliente,deleteCliente} = require("../controllers/clientes")
+ const {allClientes, singleCliente, createCliente,editCliente,deleteCliente} = require("../Controllers/clientes")
 
 const router = express.Router()
 

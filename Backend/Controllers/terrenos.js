@@ -8,7 +8,7 @@ const allTerrenos = (req, res) => {
     })
 }
 
-const unTerreno = (req, res) => {
+const singleTerreno = (req, res) => {
     const { id } = req.params.id;
     const query = `select * from Terrenos where id_terreno = ${id};`
     conection.query(query, (err, results) => {
@@ -44,4 +44,4 @@ const deleteTerreno = (req, res) => {
     })
 }
 
-module.exports = { allTerrenos, unTerreno, createTerreno, editTerreno, deleteTerreno }
+module.exports = { allTerrenos, singleTerreno, createTerreno, editTerreno, deleteTerreno }
