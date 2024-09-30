@@ -1,7 +1,7 @@
 const {conection} = require('../DB/Config');
 
 const allUsuarios = (req, res) => {
-    const query = `select * from StockMateriales;`
+    const query = `select * from Usuarios;`
     conection.query(query, (err, results) => {
         if (err) throw err;
         res.json(results);
