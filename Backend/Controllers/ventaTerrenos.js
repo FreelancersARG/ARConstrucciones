@@ -1,4 +1,4 @@
-const {conection} = require('../DB/config');
+const {conection} = require('../DB/Config');
 
 const allVentaTerreno = (req,res) =>{
 const query = `SELECT * FROM VentaTerrenos`

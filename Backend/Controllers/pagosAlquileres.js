@@ -1,4 +1,4 @@
-const { conection } = require("../DB/config");
+const { conection } = require("../DB/Config");
 
 const allPagosAlquileres = (req, res) => {
     const query = `select P.FechaPagoAlquiler, P.MontoPagoAlquiler, C.NombreCliente, D.NombreDepartamento 

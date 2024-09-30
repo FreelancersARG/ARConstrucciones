@@ -1,6 +1,6 @@
 const express = require("express")
 
-const {allObras, singleObra, createObra,editObra,deleteObra} = require("../controllers/obras")
+const {allObras, singleObra, createObra,editObra,deleteObra} = require("../Controllers/obras")
 
 const router = express.Router()
 

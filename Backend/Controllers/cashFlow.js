@@ -1,4 +1,4 @@
-const {conection} = require("../DB/config");
+const {conection} = require("../DB/Config");
 
 const allCashFlow =(req,res)=>{
 // todas las fechas vienen desde el front por medio de un formulario y es traida por req.body

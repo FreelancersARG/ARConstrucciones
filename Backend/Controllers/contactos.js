@@ -1,4 +1,4 @@
-const {conection} = require("../DB/config");
+const {conection} = require("../DB/Config");
 const {transporter} = require("../DB/Envio-Mail");
 
 const allContactos=(req,res)=>{

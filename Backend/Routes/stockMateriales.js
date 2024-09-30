@@ -1,7 +1,7 @@
 const express = require("express")
 
 const router = express.Router()
-const {allStockMateriales,singleStockMateriales,createStockMateriales,editStockMateriales,deleteStockMateriales} = require("../controllers/stockMateriales")
+const {allStockMateriales,singleStockMateriales,createStockMateriales,editStockMateriales,deleteStockMateriales} = require("../Controllers/stockMateriales")
 
 //peticiones http
 router.get("/stockMateriales/",allStockMateriales)//muestra todo
