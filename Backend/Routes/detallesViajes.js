@@ -2,13 +2,13 @@ const express = require("express")
 
 const router = express.Router()// metodo propio de express que tiene el enrutamiento
 
-const {allDetalleViajes,singleDetalleViajes,createDetalleViajes,editDetalleViajes,deleteDetalleViajes} = require("../controllers/detalleViajes")
+const {allDetallesViajes,singleDetallesViajes,createDetallesViajes,editDetallesViajes,deleteDetallesViajes} = require("../Controllers/detallesViajes")
 
 //peticiones http
-router.get("/detalleViajes/",allDetalleViajes)//muestra todo
-router.get("/detalleViajes/:id", singleDetalleViajes)//para ver uno
-router.post("/detalleViajes/create",createDetalleViajes)
-router.put("/detalleViajes/edit/:id",editDetalleViajes)
-router.put("/detalleViajes/delete/:id",deleteDetalleViajes)
+router.get("/detallesViajes/",allDetallesViajes)//muestra todo
+router.get("/detallesViajes/:id", singleDetallesViajes)//para ver uno
+router.post("/detallesViajes/create",createDetallesViajes)
+router.put("/detallesViajes/edit/:id",editDetallesViajes)
+router.put("/detallesViajes/delete/:id",deleteDetallesViajes)
 
 module.exports = router

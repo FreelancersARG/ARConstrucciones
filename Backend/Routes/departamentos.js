@@ -2,7 +2,7 @@ const express = require("express")
 
 const router = express.Router()// metodo propio de express que tiene el enrutamiento
 
-const {allDepartamentos,singleDepartamentos,createDepartamentos,editDepartamentos,deleteDepartamentos} = require("../controllers/departamentos")
+const {allDepartamentos,singleDepartamentos,createDepartamentos,editDepartamentos,deleteDepartamentos} = require("../Controllers/departamentos")
 
 //peticiones http
 router.get("/departamentos/",allDepartamentos)//muestra todo
