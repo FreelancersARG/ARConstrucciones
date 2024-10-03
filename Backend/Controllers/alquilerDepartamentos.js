@@ -1,9 +1,10 @@
-const { conection } = require('../DB/config');
+const { conection } = require('../DB/Config');
 
 
 
 // cambiar endpoints
 const allAlquilerDepartamentos = (req, res) => {
+    
     const query = `select FechaInicioAlquiler, A.FechaFinAlquiler, D.NombreDepartamento, D.DireccionDepartamento, D.DescripcionDepartamento, D.PrecioDepartamento,D.PrecioExpensa, C.NombreCliente, C.TelefonoCliente 
 from AlquilerDepartamentos A
 join Departamentos D

@@ -1,5 +1,5 @@
 const express = require("express")
-const {allViajes, singleViaje, createViaje,editViaje,deleteViaje} = require("../controllers/viajes")
+const {allViajes, singleViaje, createViaje,editViaje,deleteViaje} = require("../Controllers/viajes")
 
 const router = express.Router()
 

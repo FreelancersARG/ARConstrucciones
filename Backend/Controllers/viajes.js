@@ -1,4 +1,4 @@
-const {conection} = require('../DB/config');
+const {conection} = require('../DB/Config');
 
 // Funcion para mostrar todos los viajes
 
