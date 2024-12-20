@@ -66,9 +66,13 @@ const VerCertificados = ({ onCertificadoVer }) => {
                 <td style="padding: 8px; border-bottom: 1px solid #ddd;">${verRegistroSeleccionado.PrecioObra}</td>
               </tr>
               </tr>
-                 <tr>
                 <th style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">Progreso de la obra:</th>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd;">${verRegistroSeleccionado.ProgresoObra}%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                  ${verRegistroSeleccionado.ProgresoObra}%
+                  <div style="background-color: #f3f3f3; border-radius: 4px; overflow: hidden; margin-top: 4px;">
+                    <div style="width: ${verRegistroSeleccionado.ProgresoObra}%; background-color: #4caf50; height: 10px;"></div>
+                  </div>
+                </td>
               </tr>
               </tr>
                  <tr>

@@ -41,9 +41,14 @@ const VerObra = ({ onObraVer }) => {
                   <th style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">Sector de la Obra:</th>
                   <td style="padding: 8px; border-bottom: 1px solid #ddd;">${verRegistroSeleccionado.sectorObra === 1 ? "Privado" : "Publico"}</td>
                 </tr>
-                <tr>
-                    <th style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">Progreso de la Obra:</th>
-                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">${verRegistroSeleccionado.progresoObra}%</td>   
+                  <th style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">Barra de Progreso:</th>
+                  <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <div style="background-color: #f3f3f3; border-radius: 4px; overflow: hidden;">
+                      <div style="width: ${verRegistroSeleccionado.progresoObra}%; background-color: #4caf50; text-align: center; color: white; padding: 2px 0;">
+                        ${verRegistroSeleccionado.progresoObra}%
+                      </div>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                     <th style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">Cliente:</th>

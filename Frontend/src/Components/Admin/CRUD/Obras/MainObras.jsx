@@ -60,7 +60,20 @@ const MainObras = () => {
     { header: 'Nombre de la Obra', accessorKey: 'nombreObra' },
     { header: 'Dirección Obra', accessorKey: 'direccionObra' },
     { header: 'Precio Obra', accessorFn: (row) => `$${row.precioObra}` },
-    { header: 'Progreso', accessorFn: (row) => `${row.progresoObra}%` },
+    {
+      header: 'Progreso',
+      cell: ({ row }) => (
+        <div className="w-full bg-gray-200 rounded-full h-4 relative">
+          <div
+            className="bg-green-500 h-4 rounded-full"
+            style={{ width: `${row.original.progresoObra}%` }}
+          ></div>
+          <span className="absolute inset-0 flex items-center justify-center text-xs text-grey font-semibold">
+            {`${row.original.progresoObra}%`}
+          </span>
+        </div>
+      ),
+    },
     { header: 'Cliente', accessorFn: (row) => `${row.nombreCliente} ${row.apellidoCliente}` },
     {
       header: 'Acciones',
