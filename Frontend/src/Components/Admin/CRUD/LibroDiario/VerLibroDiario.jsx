@@ -46,7 +46,9 @@ const VerLibroDiario = () => {
     }
   };
 
-
+useEffect(() => {
+  enviarFechaPorPost();
+}, [fechaRegistro]);
 
   const handleBuscarFecha = async () => {
     await enviarFechaPorPost();
