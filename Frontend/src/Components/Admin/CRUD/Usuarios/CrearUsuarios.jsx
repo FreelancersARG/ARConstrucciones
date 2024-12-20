@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import useAuthStore from '../../../../Context/useAuthStore';
 import useRegistroStore from '../../../../Context/useRegistroStore';
-import { URL_USUARIOS_CREAR, URL_EMPLEADOS, URL_USUARIOS } from '../../../../Constants/endpoints-API';
+import { URL_USUARIOS_CREAR, URL_USUARIOS, URL_EMPLEADOS_SIN_USUARIO } from '../../../../Constants/endpoints-API';
 
 const CrearUsuarios = ({ onUsuarioRegistrado }) => {
   const { isRegistroModalOpen, closeRegistroModal } = useRegistroStore();
@@ -13,7 +13,7 @@ const CrearUsuarios = ({ onUsuarioRegistrado }) => {
 
   const getEmpleados = async () => {
     try {
-      const response = await axios.get(URL_EMPLEADOS, {
+      const response = await axios.get(URL_EMPLEADOS_SIN_USUARIO, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEmpleados(response.data);

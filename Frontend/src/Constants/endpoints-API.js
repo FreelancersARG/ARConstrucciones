@@ -40,6 +40,7 @@ export const URL_USUARIOS_ELIMINAR = "http://localhost:8000/usuarios/delete/";
 //empleados
 
 export const URL_EMPLEADOS = "http://localhost:8000/empleados/";
+export const URL_EMPLEADOS_SIN_USUARIO = "http://localhost:8000/empleadosSinusuarios/";
 export const URL_EMPLEADOS_CREAR = "http://localhost:8000/empleados/create/";
 export const URL_EMPLEADOS_EDITAR = "http://localhost:8000/empleados/edit/";
 export const URL_EMPLEADOS_ELIMINAR = "http://localhost:8000/empleados/delete/";
