@@ -38,13 +38,34 @@ const VerLibroDiario = () => {
         { fechaRegistro },
         { headers: { authorization: `Bearer ${token}` } }
       );
-      if (response.status === 200) {setDatos(response.data.data);}
-      // if (response.status === 200) 
-        // obtenerDatosPorGet();
+      if (response.status === 200) {
+        
+        setDatos(response.data.data || []);
+  
+      }
+     
     } catch (error) {
       console.error('Error al enviar la fecha por POST:', error);
     }
   };
+
+
+  const handleFechaSeleccionada = (e) => {
+    const nuevaFecha = e.target.value;
+    const fechaActual = new Date();
+    const fechaIngresada = new Date(nuevaFecha);
+  
+    // Validar si la fecha seleccionada es mayor a la fecha actual
+    if (fechaIngresada > fechaActual) {
+      toast.error('Fecha inválida. Seleccione una fecha anterior o igual a hoy.', {
+        position: 'top-right',
+      });
+      return;
+    }
+  
+    setFechaSeleccionada(nuevaFecha);
+  };
+  
 
 useEffect(() => {
   enviarFechaPorPost();
@@ -59,23 +80,32 @@ useEffect(() => {
 
     // Dividir los datos en Debe y Haber
     const calcularTotales = () => {
-      const debe = datos.filter((item) => item.TIPO === "Egreso");
-      const haber = datos.filter((item) => 
-        item.TIPO === "Ingreso" ? "Ingreso" :
-        item.TIPO === "CERTIFICADO" ? "CERTIFICADO" :
-        item.TIPO === "VENTA TERRENO" ? "VENTA TERRENO" :
-        item.TIPO === "ALQUILER" ? "ALQUILER" :
-        "Otros ingresos"
-      );  
+      const debe = datos.filter(
+        (item) =>
+          item.TIPO === "Egreso" ||
+          item.TIPO === "COMPRA MATERIAL" ||
+          item.TIPO === "REMUNERACION" ||
+          item.TIPO === "Otros egresos"
+      );
+    
+      const haber = datos.filter(
+        (item) =>
+          item.TIPO === "Ingreso" ||
+          item.TIPO === "CERTIFICADO" ||
+          item.TIPO === "VENTA TERRENO" ||
+          item.TIPO === "ALQUILER" ||
+          item.TIPO === "Otros ingresos"
+      );
+    
       const totalDebe = debe.reduce((sum, item) => sum + parseFloat(item.Monto), 0);
       const totalHaber = haber.reduce((sum, item) => sum + parseFloat(item.Monto), 0);
       const neto = totalHaber - totalDebe;
-
-  
+    
       return { debe, haber, totalDebe, totalHaber, neto };
     };
-  
+    
     const { debe, haber, totalDebe, totalHaber, neto } = calcularTotales();
+    
 
 
     useEffect(() => {
@@ -128,12 +158,13 @@ useEffect(() => {
       {/* Selector de fecha */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 my-6">
         <div className="relative">
-          <input
-            type="date"
-            className="px-4 py-2 rounded-lg border-2"
-            value={fechaSeleccionada}
-            onChange={(e) => setFechaSeleccionada(e.target.value)}
-          />
+        <input
+  type="date"
+  className="px-4 py-2 rounded-lg border-2"
+  value={fechaSeleccionada}
+  onChange={handleFechaSeleccionada}
+/>
+
         </div>
         <button
           onClick={handleBuscarFecha}
@@ -186,7 +217,7 @@ useEffect(() => {
         <div className="overflow-x-auto w-full">
           <table className="table-auto w-full border-collapse border border-gray-300">
             <thead>
-              <tr className="bg-gray-200">
+              <tr className="bg-zinc-500">
                 <th className="border border-gray-300 px-4 py-2">#</th>
                 <th className="border border-gray-300 px-4 py-2">Tipo</th>
                 <th className="border border-gray-300 px-4 py-2">Descripción</th>
@@ -195,55 +226,72 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
-              {/* {datos.length > 0 ? ( */}
-                {debe.map((item, index) => (
-                  <tr key={index} className="even:bg-gray-100">
-                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
-                    <td className="border border-gray-300 px-4 py-2">{item.TIPO}</td>
-                    <td className="border border-gray-300 px-4 py-2">{formatCurrency(item.Monto)}</td>
-                    <td className="border border-gray-300 px-4 py-2">{item.Monto}</td>
-                    <td className="border border-gray-300 px-4 py-2">{item.Fecha}</td>
-                  </tr>
-                     ))}
-                                {/* Total Debe */}
-                  <tr className="bg-gray-300 font-bold">
-                      <td colSpan="3" className="text-right px-4 py-2">Total Debe:</td>
-                      <td className="px-4 py-2">{formatCurrency(totalDebe)}</td>
-                      <td></td>
-                   </tr>
-                  
-                                {/* Sección Haber */}
-                   {haber.map((item, index) => (
-                      <tr key={`haber-${index}`} className="even:bg-gray-100">
-                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
-                    <td className="border border-gray-300 px-4 py-2">{item.TIPO}</td>
-                    <td className="border border-gray-300 px-4 py-2">{formatCurrency(item.Monto)}</td>
-                    <td className="border border-gray-300 px-4 py-2">{item.Monto}</td>
-                    <td className="border border-gray-300 px-4 py-2">{item.Fecha}</td>
-                    </tr>
-                                ))}
-                                {/* Total Haber */}
-                    <tr className="bg-gray-300 font-bold">
-                      <td colSpan="3" className="text-right px-4 py-2">Total Haber:</td>
-                      <td className="px-4 py-2">{formatCurrency(totalHaber)}</td>
-                      <td></td>
-                     </tr>
-                  
-                                {/* Neto */}
-                                <tr className={`font-bold ${neto === 0 ? "bg-green-300" : "bg-red-300"}`}>
-                                  <td colSpan="3" className="text-right px-4 py-2">Total Neto:</td>
-                                  <td className="px-4 py-2">{formatCurrency(neto)}</td>
-                                  <td>{neto !== 0 ? "Correcto" : "Incorrecto"}</td>
-                                </tr>
-                
-              {/* ) : (
-                <tr>
-                  <td colSpan="5" className="text-center border border-gray-300 px-4 py-2">
-                    No hay datos disponibles.
-                  </td>
-                </tr>
-              )} */}
-            </tbody>
+  {datos.length > 0 ? (
+    <>
+      {debe.length > 0 ? (
+        debe.map((item, index) => (
+          <tr key={`debe-${index}`} className="even:bg-gray-100">
+            <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+            <td className="border border-gray-300 px-4 py-2">{item.TIPO}</td>
+            <td className="border border-gray-300 px-4 py-2">{item.Descripcion}</td>
+            <td className="border border-gray-300 px-4 py-2">{formatCurrency(item.Monto)}</td>
+            <td className="border border-gray-300 px-4 py-2">{item.Fecha}</td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan="5" className="text-center text-red-600 font-bold py-4">
+            No tiene egresos registrados para la fecha seleccionada.
+          </td>
+        </tr>
+      )}
+
+      <tr className="bg-amber-200 font-bold">
+        <td colSpan="3" className="text-right px-4 py-2">Total Debe:</td>
+        <td className="px-4 py-2">{formatCurrency(totalDebe)}</td>
+        <td></td>
+      </tr>
+
+      {haber.length > 0 ? (
+        haber.map((item, index) => (
+          <tr key={`haber-${index}`} className="even:bg-gray-100">
+            <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+            <td className="border border-gray-300 px-4 py-2">{item.TIPO}</td>
+            <td className="border border-gray-300 px-4 py-2">{item.Descripcion}</td>
+            <td className="border border-gray-300 px-4 py-2">{formatCurrency(item.Monto)}</td>
+            <td className="border border-gray-300 px-4 py-2">{item.Fecha}</td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan="5" className="text-center text-red-600 font-bold py-4">
+            No tiene ingresos registrados para la fecha seleccionada.
+          </td>
+        </tr>
+      )}
+
+      <tr className="bg-amber-200 font-bold">
+        <td colSpan="3" className="text-right px-4 py-2">Total Haber:</td>
+        <td className="px-4 py-2">{formatCurrency(totalHaber)}</td>
+        <td></td>
+      </tr>
+
+      <tr className={`font-bold ${neto >= 0 ? "bg-green-300" : "bg-red-300"}`}>
+        <td colSpan="3" className="text-right px-4 py-2">Total Neto:</td>
+        <td className="px-4 py-2">{formatCurrency(neto)}</td>
+        <td></td>
+      </tr>
+    </>
+  ) : (
+    <tr>
+      <td colSpan="5" className="text-center text-red-600 font-bold py-4">
+        No hay registros ingresados para la fecha seleccionada.
+      </td>
+    </tr>
+  )}
+</tbody>
+
+
           </table>
         </div>
       </div>
