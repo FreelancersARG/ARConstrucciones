@@ -57,7 +57,6 @@ const EditarClientes = ({ onClienteEditado }) => {
         <label><strong>Condición del cliente:</strong></label>
         <br/>
         <select id="condicionCliente" class="swal2-input">
-        <option value="Autonomo" ${registroSeleccionado.condicionCliente === 'Autonomo' ? 'selected' : ''}>Autónomo</option>
         <option value="Privado" ${registroSeleccionado.condicionCliente === 'Privado' ? 'selected' : ''}>Privado</option>
         <option value="Monotributista" ${registroSeleccionado.condicionCliente === 'Monotributista' ? 'selected' : ''}>Monotributista</option>
       </select>

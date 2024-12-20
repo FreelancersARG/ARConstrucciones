@@ -10,6 +10,9 @@ const CrearEmpleados = ({ onEmpleadoRegistrado }) => {
   const { isRegistroModalOpen, closeRegistroModal } = useRegistroStore();
   const token = useAuthStore((state) => state.token);
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
 
   const handleRegistrarEmpleado = () => {
     Swal.fire({
@@ -29,11 +32,15 @@ const CrearEmpleados = ({ onEmpleadoRegistrado }) => {
       confirmButtonText: 'Registrar',
       showCancelButton: true,
       preConfirm: async () => {
-          const nombreEmpleado = document.getElementById('nombreEmpleado').value;
-          const apellidoEmpleado = document.getElementById('apellidoEmpleado').value;
+          let nombreEmpleado = document.getElementById('nombreEmpleado').value;
+          let apellidoEmpleado = document.getElementById('apellidoEmpleado').value;
           const dniEmpleado = document.getElementById('dniEmpleado').value;
           const direccionEmpleado = document.getElementById('direccionEmpleado').value;
           const telefonoEmpleado = document.getElementById('telefonoEmpleado').value;
+
+          // Capitalize first letter of nombre and apellido
+          nombreEmpleado = capitalizeFirstLetter(nombreEmpleado);
+          apellidoEmpleado = capitalizeFirstLetter(apellidoEmpleado);
 
           // Validaciones
           const nombreRegex = /^[a-zA-Z\sÀ-ÿ]+$/;
@@ -108,7 +115,7 @@ const CrearEmpleados = ({ onEmpleadoRegistrado }) => {
     });
   };
 
-useEffect(() => {
+  useEffect(() => {
     if (isRegistroModalOpen) {
       handleRegistrarEmpleado();
     }

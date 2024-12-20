@@ -60,7 +60,7 @@ const MainViajes = () => {
     const columns = [
       { header: 'Nº Viaje', accessorKey: 'id_DetallesViaje' },
       { header: 'Nº Vehiculo', accessorKey: 'patenteVehiculo' },
-      { header: 'Nº Obra', accessorKey: 'nombreObra' },
+      { header: 'Nombre Obra', accessorKey: 'nombreObra' },
       { header: 'Fecha de Viaje', accessorKey: 'fechaViaje' },
       {
         header: 'Acciones',

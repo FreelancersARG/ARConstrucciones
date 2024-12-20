@@ -10,6 +10,9 @@ const CrearClientes = ({ onClienteRegistrado }) => {
   const { isRegistroModalOpen, closeRegistroModal } = useRegistroStore();
   const token = useAuthStore((state) => state.token);
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
 
   const handleRegistrarCliente = () => {
     Swal.fire({
@@ -36,7 +39,6 @@ const CrearClientes = ({ onClienteRegistrado }) => {
             <label><strong>Selecciona la condición del cliente:</strong></label>
             <br/>
             <select id="condicionCliente" class="swal2-select">
-            <option value="Autónomo">Autónomo</option>
             <option value="Monotributista">Monotributista</option>
             <option value="Privado">Privado</option>
           </select>
@@ -45,8 +47,8 @@ const CrearClientes = ({ onClienteRegistrado }) => {
       confirmButtonText: "Registrar",
       showCancelButton: true,
       preConfirm: () => {
-        const nombreCliente = document.getElementById("nombreCliente").value;
-        const apellidoCliente = document.getElementById("apellidoCliente").value;
+        let nombreCliente = document.getElementById("nombreCliente").value;
+        let apellidoCliente = document.getElementById("apellidoCliente").value;
         const condicionCliente = document.getElementById("condicionCliente").value;
         const razonSocial = document.getElementById("razonSocial").value;
         const cuil_cuit_Cliente = document.getElementById("cuil_cuit_Cliente").value;
@@ -54,6 +56,10 @@ const CrearClientes = ({ onClienteRegistrado }) => {
         const mailCliente = document.getElementById("mailCliente").value;
         const direccionCliente = document.getElementById("direccionCliente").value;
         const datosGarantes = document.getElementById("datosGarantes").value;
+
+        // Capitalize first letter of nombreCliente and apellidoCliente
+        nombreCliente = capitalizeFirstLetter(nombreCliente);
+        apellidoCliente = capitalizeFirstLetter(apellidoCliente);
 
         // Validaciones
         const nombreRegex = /^[a-zA-Z\sÀ-ÿ]+$/;
