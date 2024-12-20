@@ -48,11 +48,6 @@ const EditarClientes = ({ onClienteEditado }) => {
         <input id="direccionCliente" class="swal2-input" value="${registroSeleccionado.direccionCliente}" />
          <br>
         <br>
-        <label><b>Datos Garante</b></label> 
-        <br>
-        <input id="datosGarantes" class="swal2-input" value="${registroSeleccionado.datosGarantes}" />
-
-        <br/>
         <br/>
         <label><strong>Condición del cliente:</strong></label>
         <br/>
@@ -73,7 +68,6 @@ const EditarClientes = ({ onClienteEditado }) => {
         const telefonoCliente = document.getElementById('telefonoCliente').value;
         const mailCliente = document.getElementById('mailCliente').value;
         const direccionCliente = document.getElementById('direccionCliente').value;
-        const datosGarantes = document.getElementById('datosGarantes').value;
 
         // Validaciones
         const nombreRegex = /^[a-zA-Z\sÀ-ÿ]+$/;
@@ -82,7 +76,6 @@ const EditarClientes = ({ onClienteEditado }) => {
         const telefonoRegex = /^\d{10}$/;
         const mailRegex = /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/;
         const direccionRegex = /^[a-zA-Z0-9À-ÿ\s,.-]+$/;
-        const datosGarantesRegex = /^[^@]+$/;
 
         if (!nombreCliente || !nombreRegex.test(nombreCliente)) {
           Swal.showValidationMessage("El nombre no debe contener números.");
@@ -108,10 +101,6 @@ const EditarClientes = ({ onClienteEditado }) => {
           Swal.showValidationMessage("La dirección no debe contener caracteres especiales.");
           return false;
         }
-        if (!datosGarantes || !datosGarantesRegex.test(datosGarantes)) {
-          Swal.showValidationMessage("Los datos de los garantes no deben contener caracteres especiales.");
-          return false;
-        }
 
         return {
           nombreCliente,
@@ -121,8 +110,8 @@ const EditarClientes = ({ onClienteEditado }) => {
           cuil_cuit_Cliente,
           telefonoCliente,
           mailCliente,
-          direccionCliente,
-          datosGarantes
+          direccionCliente
+          
         };
       }
     }).then(async (result) => {

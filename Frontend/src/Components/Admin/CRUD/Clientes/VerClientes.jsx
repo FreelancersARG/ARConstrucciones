@@ -45,10 +45,6 @@ const VerClientes = ({ onAlquilerVer }) => {
                   <th style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">Dirección:</th>
                   <td style="padding: 8px; border-bottom: 1px solid #ddd;">${verRegistroSeleccionado.direccionCliente}</td>
                 </tr>
-                <tr>
-                  <th style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">Datos Garantes:</th>
-                  <td style="padding: 8px; border-bottom: 1px solid #ddd;">${verRegistroSeleccionado.datosGarantes}</td>
-                </tr>
               </tbody>
             </table>
           `,

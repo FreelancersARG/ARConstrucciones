@@ -23,7 +23,7 @@ const singleCliente = (req, res) => {
 const createCliente = (req, res) => {
     const {nombreCliente, apellidoCliente, condicionCliente, razonSocial, cuil_cuit_Cliente, telefonoCliente, mailCliente, direccionCliente, datosGarantes} = req.body
 
-    const query = `insert into Clientes (nombreCliente, apellidoCliente, condicionCliente, razonSocial, cuil_cuit_Cliente, telefonoCliente, mailCliente, direccionCliente, datosGarantes) values("${nombreCliente}","${apellidoCliente}","${condicionCliente}", "${razonSocial}", "${cuil_cuit_Cliente}", "${telefonoCliente}","${mailCliente}", "${direccionCliente}", "${datosGarantes}")`
+    const query = `insert into Clientes (nombreCliente, apellidoCliente, condicionCliente, razonSocial, cuil_cuit_Cliente, telefonoCliente, mailCliente, direccionCliente, datosGarantes) values("${nombreCliente}","${apellidoCliente}","${condicionCliente}", "${razonSocial}", "${cuil_cuit_Cliente}", "${telefonoCliente}","${mailCliente}", "${direccionCliente}", "null")`
     conection.query(query, (err,results) => {
         if(err) throw err 
         res.send(results)
@@ -33,7 +33,7 @@ const createCliente = (req, res) => {
 const editCliente = (req, res) => {
     const id = req.params.id
     const {nombreCliente, apellidoCliente, condicionCliente, razonSocial, cuil_cuit_Cliente, telefonoCliente, mailCliente, direccionCliente, datosGarantes} = req.body
-    const query = `update Clientes set nombreCliente="${nombreCliente}", apellidoCliente="${apellidoCliente}", condicionCliente="${condicionCliente}", razonSocial="${razonSocial}", cuil_cuit_Cliente="${cuil_cuit_Cliente}",telefonoCliente="${telefonoCliente}",mailCliente="${mailCliente}", direccionCliente="${direccionCliente}", datosGarantes="${datosGarantes}", activoCliente=1 where id_cliente=${id}`
+    const query = `update Clientes set nombreCliente="${nombreCliente}", apellidoCliente="${apellidoCliente}", condicionCliente="${condicionCliente}", razonSocial="${razonSocial}", cuil_cuit_Cliente="${cuil_cuit_Cliente}",telefonoCliente="${telefonoCliente}",mailCliente="${mailCliente}", direccionCliente="${direccionCliente}", datosGarantes="null", activoCliente=1 where id_cliente=${id}`
     conection.query(query, (err,results) => {
         if(err) throw err
         res.send(results)

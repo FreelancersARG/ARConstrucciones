@@ -30,10 +30,7 @@ const CrearClientes = ({ onClienteRegistrado }) => {
             
             <input id="mailCliente" placeholder="Mail" class="swal2-input" />
             
-            <input id="direccionCliente" placeholder="Direccion" class="swal2-input" />
-            
-            <input id="datosGarantes" placeholder="Datos Garantes" class="swal2-input" />
-            
+            <input id="direccionCliente" placeholder="Direccion" class="swal2-input" />            
             <br/>
             <br/>
             <label><strong>Selecciona la condición del cliente:</strong></label>
@@ -55,7 +52,6 @@ const CrearClientes = ({ onClienteRegistrado }) => {
         const telefonoCliente = document.getElementById("telefonoCliente").value;
         const mailCliente = document.getElementById("mailCliente").value;
         const direccionCliente = document.getElementById("direccionCliente").value;
-        const datosGarantes = document.getElementById("datosGarantes").value;
 
         // Capitalize first letter of nombreCliente and apellidoCliente
         nombreCliente = capitalizeFirstLetter(nombreCliente);
@@ -68,7 +64,6 @@ const CrearClientes = ({ onClienteRegistrado }) => {
         const telefonoRegex = /^\d{10}$/;
         const mailRegex = /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/;
         const direccionRegex = /^[a-zA-Z0-9À-ÿ\s,.-]+$/;
-        const datosGarantesRegex = /^[^@]+$/;
         const razonRegex = /^[a-zA-Z\sÀ-ÿ]+$/;
 
         if (!nombreCliente || !nombreRegex.test(nombreCliente)) {
@@ -95,11 +90,7 @@ const CrearClientes = ({ onClienteRegistrado }) => {
           Swal.showValidationMessage("La dirección no debe contener caracteres especiales.");
           return false;
         }
-        if (!datosGarantes || !datosGarantesRegex.test(datosGarantes)) {
-          Swal.showValidationMessage("Los datos de los garantes no deben contener caracteres especiales.");
-          return false;
-        }
-
+      
         if (!razonSocial || !razonRegex.test(razonSocial)) {
           Swal.showValidationMessage("La razon social no es correcta.");
           return false;
@@ -114,7 +105,6 @@ const CrearClientes = ({ onClienteRegistrado }) => {
           telefonoCliente,
           mailCliente,
           direccionCliente,
-          datosGarantes,
         };
       },
     }).then(async (result) => {
