@@ -73,13 +73,6 @@ const RecuperarContraseña = () => {
         }
       );
 
-    // Notificación al admin
-    emailjs.send(
-      'service_dsdwt6f',
-      'template_admin_notificacion',
-      { emailUsuario: data.email }, // Usa "email" aquí también
-      { publicKey: '8dmLv8MowtYvWjLXg' }
-    );
   };
 
   return (
