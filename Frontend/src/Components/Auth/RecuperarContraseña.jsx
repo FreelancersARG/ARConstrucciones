@@ -9,7 +9,7 @@ import useAuthStore from "../../Context/useAuthStore";
 import Error from "../Layout/Error";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import WhatsAppButton from "../../Components/Layout/Whatsapp/WhatsAppButton";
-import { URL_EMPLEADOS, URL_USUARIOS } from "../../Constants/endpoints-API";
+import { URL_USUARIOS } from "../../Constants/endpoints-API";
 
 const RecuperarContraseña = () => {
   const token = useAuthStore((state) => state.token);
