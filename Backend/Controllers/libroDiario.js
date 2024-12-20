@@ -73,7 +73,7 @@ const alldaily_books = (req, res) => {
         });
       } else {
         // Si no se encontraron resultados
-        return res.status(404).json({ message: "No se encontraron registros para la fecha proporcionada" });
+        return res.status(200).json([]);
       }
     }
   );

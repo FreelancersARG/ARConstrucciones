@@ -71,7 +71,7 @@ const CrearVtaTerrenos = ({ onVtaTerrenoRegistrado }) => {
         showCancelButton: true,
         preConfirm: () => {
           const id_cliente = document.getElementById('select_cliente').value;
-          const id_terreno = document.getElementById('select_cliente').value;
+          const id_terreno = document.getElementById('select_terreno').value;
           const fechaVentaTerreno = document.getElementById('fechaVentaTerreno').value;
   
 
